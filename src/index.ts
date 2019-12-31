@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 import { italic, yellow } from "chalk";
-import attachJiraIssueToMessage from "./hooks/attach-issue-to-message";
+import { attachIssueToMessage } from "./hooks/attach-issue-to-message";
 
 export default (async () => {
   try {
     const [, , script, firstParam, ...args] = process.argv;
     const { HUSKY_GIT_PARAMS } = process.env;
+    let processSuccess = true;
     switch (script) {
       case "link-jira-issue":
-        attachJiraIssueToMessage(firstParam, HUSKY_GIT_PARAMS);
+        processSuccess = await attachIssueToMessage(HUSKY_GIT_PARAMS);
         break;
       case "help":
       case "-h":
@@ -19,6 +20,7 @@ export default (async () => {
         console.log(yellow(italic("- coara-pre-commit link-jira-issue CON\n\n")));
         break;
     }
+    process.exit(processSuccess ? 0 : 1);
   } catch (error) {
     process.exit(1);
   }

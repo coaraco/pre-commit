@@ -17,7 +17,7 @@ On your `package.json` you should add your husky configuration, here an example 
     ...,
     husky: {
         hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue [MYPROJECTKEY]"
+            "commit-msg": "coara-pre-commit link-jira-issue"
         }
     }
 }
@@ -27,11 +27,11 @@ On your `package.json` you should add your husky configuration, here an example 
 
 ### Link jira issues
 
-This command will add your Jira issue to the message commit trying to find on the branch name the key of your project followed by the number of the issue, your branch should look like feature-`MYPROJECTKEY-12123-some-amazing-stuff`.
+This command will add your Jira issue to the message commit trying to find on the branch name the key of your project followed by the number of the issue, your branch should look like `feature/MYPROJECTKEY-12123-some-amazing-stuff`.
 To trigger this script the command should be like the next:
 
 ```bash
-npx coara-pre-commit link-jira-issue [name-of-your-project-key]
+npx coara-pre-commit link-jira-issue
 ```
 
 This command always should be triggered by the `commit-msg` hook from husky, because they need their parameter "HUSKY_GIT_PARAMS".
@@ -42,7 +42,7 @@ Your configuration should like:
     ...,
     husky: {
         hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue [MYPROJECTKEY]"
+            "commit-msg": "coara-pre-commit link-jira-issue"
         }
     }
 }
