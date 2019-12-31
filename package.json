@@ -1,13 +1,13 @@
 {
   "name": "@coara/pre-commit",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "pre-commit scripts for coara projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"No test specified\"",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
