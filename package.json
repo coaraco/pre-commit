@@ -1,0 +1,66 @@
+{
+  "name": "@coara/pre-commit",
+  "version": "0.0.0",
+  "description": "pre-commit scripts for coara projects",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "bin": {
+    "coara-pre-commit": "lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coaraco/pre-commit.git"
+  },
+  "keywords": [
+    "pre-commit",
+    "node",
+    "typescript",
+    "prettier",
+    "jira"
+  ],
+  "author": "coara team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coaraco/pre-commit/issues"
+  },
+  "homepage": "https://github.com/coaraco/pre-commit#readme",
+  "dependencies": {
+    "@types/node": "^13.1.1",
+    "chalk": "^3.0.0",
+    "child_process": "^1.0.2",
+    "fs": "0.0.1-security",
+    "ts-node": "^8.5.4"
+  },
+  "devDependencies": {
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.4"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,md,js}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
