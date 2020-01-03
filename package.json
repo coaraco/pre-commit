@@ -1,6 +1,6 @@
 {
   "name": "@coara/pre-commit",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "pre-commit scripts for coara projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -29,7 +29,11 @@
     "prettier",
     "jira"
   ],
-  "author": "coara team",
+  "author": {
+    "name": "coara team",
+    "email": "contact@coara.co",
+    "url": "https://coara.co"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/coaraco/pre-commit/issues"

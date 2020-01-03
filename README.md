@@ -114,3 +114,7 @@ Finaly you should add this command on you husky configuration like:
     }
 }
 ```
+
+---
+
+Package powered by [coara TM](https://coara.co)
