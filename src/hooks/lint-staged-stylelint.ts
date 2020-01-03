@@ -6,28 +6,12 @@ export async function lintStagedStylelint(pattern: string = "**/*.{scss,css}"): 
   console.log(`stylelint --fix ${pattern} && git add`);
   let resp: IResponse = { ok: true };
   try {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     await lintStaged({
       config: {
         [pattern]: "stylelint --fix",
       },
     });
-    resp = await gitAdd();
+    // resp = await gitAdd();
   } catch (error) {
     resp = { ok: false, error };
   }
