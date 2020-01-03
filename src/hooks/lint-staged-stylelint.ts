@@ -22,7 +22,6 @@ export async function lintStagedStylelint(pattern: string = "**/*.{scss,css}"): 
 
 
 
-
     await lintStaged({
       config: {
         [pattern]: "stylelint --fix",
