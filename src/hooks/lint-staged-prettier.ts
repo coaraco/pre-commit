@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { exec } from "child_process";
 import * as lintStaged from "lint-staged";
+import { gitAdd } from "./git-add";
 
 export async function lintStagedPrettier(pattern: string = "**/*.{ts,scss,html,md,js}"): Promise<IResponse> {
   console.log(`prettier --write ${pattern} && git add`);
@@ -12,7 +12,7 @@ export async function lintStagedPrettier(pattern: string = "**/*.{ts,scss,html,m
       quiet: true,
       debug: true,
     });
-    exec("git add");
+    resp = await gitAdd();
   } catch (error) {
     resp = { ok: false, error };
   }

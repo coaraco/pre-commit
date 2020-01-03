@@ -18,7 +18,7 @@ On your `package.json` you should add your husky configuration, here an example 
     husky: {
         hooks: {
             "commit-msg": "coara-pre-commit link-jira-issue",
-            "pre-commit": "coara-pre-commit lint-staged-stylelint & coara-pre-commit lint-staged-prettier"
+            "pre-commit": "coara-pre-commit lint-staged-stylelint && coara-pre-commit lint-staged-prettier && git add"
         }
     }
 }

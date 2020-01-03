@@ -65,13 +65,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "coara-pre-commit lint-staged-stylelint & coara-pre-commit lint-staged-prettier"
     }
-  },
-  "lint-staged": {
-    "**/*.{ts,md,js}": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }
