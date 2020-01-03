@@ -11,7 +11,7 @@ export async function lintStagedStylelint(pattern: string = "**/*.{scss,css}"): 
         [pattern]: "stylelint --fix",
       },
     });
-    // resp = await gitAdd();
+    resp = await gitAdd();
   } catch (error) {
     resp = { ok: false, error };
   }

@@ -6,20 +6,16 @@ export async function lintStagedPrettier(pattern: string = "**/*.{ts,scss,html,m
   console.log(`prettier --write ${pattern} && git add`);
   let resp: IResponse = { ok: true };
   try {
-
-
-
-
-
     await lintStaged({
       config: { [pattern]: `prettier --write` },
       shell: true,
       quiet: true,
       debug: true,
     });
-    // resp = await gitAdd();
+    resp = await gitAdd();
   } catch (error) {
     resp = { ok: false, error };
   }
+
   return resp;
 }
