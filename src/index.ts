@@ -31,7 +31,6 @@ export default (async () => {
         break;
     }
     response = await gitAdd();
-
     if (!response.ok) {
       composeError(response?.error);
       process.exit(1);
