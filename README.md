@@ -17,7 +17,8 @@ On your `package.json` you should add your husky configuration, here an example 
     ...,
     husky: {
         hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue"
+            "commit-msg": "coara-pre-commit link-jira-issue",
+            "pre-commit": "coara-pre-commit lint-staged-stylelint & coara-pre-commit lint-staged-prettier"
         }
     }
 }
@@ -43,6 +44,72 @@ Your configuration should like:
     husky: {
         hooks: {
             "commit-msg": "coara-pre-commit link-jira-issue"
+        }
+    }
+}
+```
+
+### Prettier on pre-commit
+
+To auto fix the staged files with prettier you can add the command `coara-pre-commit lint-staged-prettier`. This command applies your prettier config and auto fix the files that match with your pattern. If you don't add any pattern they apply a default one.
+To can execute correctly this command you should have a prettier config file and the [lint-staged](https://github.com/okonet/lint-staged).
+Our recommendation for the prettier config file is to use the [@coara/prettier-config](https://www.npmjs.com/package/@coara/prettier-config), but you can use the configuration whatever that you want
+
+#### Install
+
+```bash
+npm i lint-staged @coara/prettier-config -D
+```
+
+add on your root directory a prettier config file `.prettierrc` and extend there the `@coara/prettier-config` or include your custom rules
+
+```rc
+@coara/prettier-config
+```
+
+Finaly you should add this command on you husky configuration like:
+
+```json
+{
+    ...,
+    husky: {
+        hooks: {
+            "commit-msg": "coara-pre-commit link-jira-issue",
+            "pre-commit": "coara-pre-commit lint-staged-prettier"
+        }
+    }
+}
+```
+
+### stylelint on pre-commit
+
+To auto fix the staged files with styelint you can add the command `coara-pre-commit lint-staged-stylelint`. This command applies your stylelint configuration to auto-fix the files that match with your pattern. If you don't add any pattern they apply a default one.
+To execute correctly this command you should have a stylelint config file and the [lint-staged](https://github.com/okonet/lint-staged).
+Our recommendation for the prettier config file is to use the [@coara/stylelint-config](https://www.npmjs.com/package/@coara/stylelint-config), but you can use the configuration whatever that you want
+
+#### Install
+
+```bash
+npm i lint-staged @coara/stylelint-config -D
+```
+
+add on your root directory a stylelint config file `.stylelintrc.json` and extend there the `@coara/stylelint-config` or include your custom rules
+
+```json
+{
+  "extends": "@coara/stylelint-config"
+}
+```
+
+Finaly you should add this command on you husky configuration like:
+
+```json
+{
+    ...,
+    husky: {
+        hooks: {
+            "commit-msg": "coara-pre-commit link-jira-issue",
+            "pre-commit": "coara-pre-commit lint-staged-stylelint"
         }
     }
 }

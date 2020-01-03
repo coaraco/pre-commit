@@ -1,7 +1,6 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "extends": "@coara/nest-tslint/tslint-config",
   "rules": {
-    "curly": false,
     "no-console": false
   }
 }

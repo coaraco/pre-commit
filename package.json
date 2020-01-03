@@ -43,10 +43,14 @@
     "ts-node": "^8.5.4"
   },
   "devDependencies": {
+    "@coara/nest-tslint": "0.0.1",
+    "@coara/prettier-config": "^1.0.1",
+    "@coara/stylelint-config": "0.0.4",
     "@types/jest": "^24.0.25",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "stylelint": "^12.0.1",
     "ts-jest": "^24.2.0",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
