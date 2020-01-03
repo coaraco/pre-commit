@@ -3,6 +3,7 @@ import { red, italic, yellow } from "chalk";
 import { attachIssueToMessage } from "./hooks/attach-issue-to-message";
 import { lintStagedStylelint } from "./hooks/lint-staged-stylelint";
 import { lintStagedPrettier } from "./hooks/lint-staged-prettier";
+import { gitAdd } from "./hooks/git-add";
 
 export default (async () => {
   try {
@@ -29,6 +30,8 @@ export default (async () => {
         showOptions();
         break;
     }
+    response = await gitAdd();
+
     if (!response.ok) {
       composeError(response?.error);
       process.exit(1);
