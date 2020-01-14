@@ -7,7 +7,7 @@ This package has some predefined hooks to do some pre-commit scripts that help i
 You should install like a develop npm dependency and you should install too a husky package
 
 ```bash
-npm i coara/pre-commit husky -D
+npm i @coara/pre-commit husky -D
 ```
 
 On your `package.json` you should add your husky configuration, here an example with a pre-commit message to link your Jira issues with your branches.
