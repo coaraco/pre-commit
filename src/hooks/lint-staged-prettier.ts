@@ -2,7 +2,7 @@
 import * as lintStaged from "lint-staged";
 
 export async function lintStagedPrettier(pattern: string = "**/*.{ts,scss,html,md,js}"): Promise<IResponse> {
-  console.log(`> prettier --write ${pattern} && git add`);
+  console.log(`> prettier --write '${pattern}' && git add`);
   let resp: IResponse = { ok: true };
   try {
     await lintStaged({
