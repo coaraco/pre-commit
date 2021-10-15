@@ -8,12 +8,11 @@ import { gitAdd } from "./hooks/git-add";
 export default (async () => {
   try {
     const [, , script, firstParam, ...args] = process.argv;
-    const { HUSKY_GIT_PARAMS } = process.env;
     let response: { ok: boolean; error?: string } = { ok: true };
 
     switch (script) {
       case "link-jira-issue":
-        response = await attachIssueToMessage(HUSKY_GIT_PARAMS);
+        response = await attachIssueToMessage(firstParam);
         break;
       case "lint-staged-stylelint":
         response = await lintStagedStylelint(firstParam);
