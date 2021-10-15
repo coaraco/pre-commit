@@ -10,18 +10,26 @@ You should install like a develop npm dependency and you should install too a hu
 npm i @coara/pre-commit husky -D
 ```
 
-On your `package.json` you should add your husky configuration, here an example with a pre-commit message to link your Jira issues with your branches.
+## Before continue
 
-```json
-{
-    ...,
-    husky: {
-        hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue",
-            "pre-commit": "coara-pre-commit lint-staged-stylelint && coara-pre-commit lint-staged-prettier"
-        }
-    }
-}
+ 1. We need to create a `.husky` folder on our project root
+ 1. Add `prepare` script to our `package.json` file (`"prepare": "husky install",`)
+ 1. Run `npm run prepare`
+
+Inside our `.husky` folder we should add as many hooks as we want, every hook is an executable file and its name is the triggering hook, here an example with a pre-commit message to link your Jira issues with your branches.
+
+```
+└── .husky
+   └── commit-msg
+```
+
+And here is the `commit-msg` file content:
+
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run coara-pre-commit link-jira-issue $1
 ```
 
 ## How this works
@@ -32,21 +40,24 @@ This command will add your Jira issue to the message commit trying to find on th
 To trigger this script the command should be like the next:
 
 ```bash
-npx coara-pre-commit link-jira-issue
+npm run coara-pre-commit link-jira-issue $1
 ```
 
-This command always should be triggered by the `commit-msg` hook from husky, because they need their parameter "HUSKY_GIT_PARAMS".
+This command always should be triggered by the `commit-msg` hook from husky.
 Your configuration should like:
 
-```json
-{
-    ...,
-    husky: {
-        hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue $1"
-        }
-    }
-}
+```
+└── .husky
+   └── commit-msg
+```
+
+And here is the `commit-msg` file content:
+
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run coara-pre-commit link-jira-issue $1
 ```
 
 ### Prettier on pre-commit
@@ -69,16 +80,18 @@ add on your root directory a prettier config file `.prettierrc` and extend there
 
 Finaly you should add this command on you husky configuration like:
 
-```json
-{
-    ...,
-    husky: {
-        hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue",
-            "pre-commit": "coara-pre-commit lint-staged-prettier"
-        }
-    }
-}
+```
+└── .husky
+   └── pre-commit
+```
+
+And here is the `pre-commit` file content:
+
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run coara-pre-commit lint-staged-prettier
 ```
 
 ### stylelint on pre-commit
@@ -103,16 +116,18 @@ add on your root directory a stylelint config file `.stylelintrc.json` and exten
 
 Finaly you should add this command on you husky configuration like:
 
-```json
-{
-    ...,
-    husky: {
-        hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue",
-            "pre-commit": "coara-pre-commit lint-staged-stylelint"
-        }
-    }
-}
+```
+└── .husky
+   └── pre-commit
+```
+
+And here is the `pre-commit` file content:
+
+```bash
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run coara-pre-commit lint-staged-stylelint
 ```
 
 ---
