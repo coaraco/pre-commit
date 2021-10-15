@@ -4,11 +4,10 @@ import { readFileSync, writeFileSync } from "fs";
 
 export async function attachIssueToMessage(gitMessagePath: string = ""): Promise<IResponse> {
   if (!gitMessagePath) {
-    if (!gitMessagePath)
-      return {
-        error: "No git message found on this commit, rember that this script always should be triggered on commit-msg hook",
-        ok: false,
-      };
+    return {
+      error: "No git message found on this commit, remember that this script always should be triggered on commit-msg hook",
+      ok: false,
+    };
   }
 
   const commitMessage = getCommitMessage(gitMessagePath);

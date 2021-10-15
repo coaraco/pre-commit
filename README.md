@@ -43,7 +43,7 @@ Your configuration should like:
     ...,
     husky: {
         hooks: {
-            "commit-msg": "coara-pre-commit link-jira-issue"
+            "commit-msg": "coara-pre-commit link-jira-issue $1"
         }
     }
 }
