@@ -1,6 +1,6 @@
 {
   "name": "@coara/pre-commit",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "pre-commit scripts for coara projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
