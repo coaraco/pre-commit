@@ -12,7 +12,7 @@ export async function attachIssueToMessage(gitMessagePath: string = ""): Promise
 
   const commitMessage = getCommitMessage(gitMessagePath);
   const issues = findIssueOnBranch(await getBranchName());
-  const newCommitMessage = issues.reduce((prev, curr) => `[ ${curr} ] ${prev}`, commitMessage);
+  const newCommitMessage = issues.reduce((prev, curr) => `${curr}: ${prev}`, commitMessage);
   writeFileSync(gitMessagePath, newCommitMessage, { encoding: "utf8" });
   return { ok: true };
 }
